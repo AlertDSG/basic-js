@@ -33,7 +33,7 @@ function countCats(matrix) {
       }
       return cicleCount;
   }
-console.log(count)
+
   return count;
 }
 

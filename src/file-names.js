@@ -21,12 +21,12 @@ function renameFiles(names) {
   names.forEach( name => {
     if(obj[name]) {
       if(obj[name + '(1)']) {
-        obj[name + '(2)'] = name + '(2)'
+        obj[name + '(2)'] = name + '(2)';
       } else {
         obj[name + '(1)'] = name + '(1)';
       }   
     } else {
-      obj[name] = name
+      obj[name] = name;
     }
   })
 

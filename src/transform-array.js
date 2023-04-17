@@ -13,9 +13,27 @@ const { NotImplementedError } = require('../extensions/index.js');
  * transform([1, 2, 3, '--discard-prev', 4, 5]) => [1, 2, 4, 5]
  * 
  */
-function transform(/* arr */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function transform(arr) {
+  if(!Array.isArray(arr)) {
+    throw new Error("'arr' parameter must be an instance of the Array!");
+  }
+
+  const transformedArray = [...arr];
+  const points = ['--double-next', '--double-prev', '--discard-next', '--discard-prev'];
+
+  for(let i = 0; i < arr.length; i++) {
+    if( transformedArray[i - 1] && transformedArray[i] === '--double-prev' ) {
+      transformedArray[i] = transformedArray[i - 1]
+    } else if(transformedArray[i + 1] && transformedArray[i] === '--double-next' ) {
+      transformedArray[i] = transformedArray[i + 1]
+    } else if(transformedArray[i - 1] && transformedArray[i] === '--discard-prev' ) {
+      transformedArray.splice(i - 1, 1);
+    } else if(transformedArray[i + 1] && transformedArray[i] === '--discard-next' ) {
+      transformedArray.splice(i + 1, 1);
+    }
+  }
+  
+  return transformedArray.filter(el => !points.includes(el))
 }
 
 module.exports = {
