@@ -44,12 +44,10 @@ class VigenereCipheringMachine {
     const newKey = key.toUpperCase();
     const arrIndex= [];
     if(!newMessage.every(el => this.alphabet.includes(el))) {
-      console.log('expetion');
       newMessage = newMessage.filter((el, i) => {
         if(!this.alphabet.includes(el)) {
           arrIndex.push(i);
-         } else return el;
-
+        } else return el;
       });
     }
 
@@ -79,10 +77,8 @@ class VigenereCipheringMachine {
         newMessage = newMessage.filter((el, i) => {
           if(!this.alphabet.includes(el)) {
             arrIndex.push(i);
-           } else return el;
-  
-        }).reverse()
-        console.log('expetion', newMessage, arrIndex);
+          } else return el;
+        }).reverse();
       }
     } else {
       if(!newMessage.every(el => this.alphabet.includes(el))) {
@@ -90,17 +86,14 @@ class VigenereCipheringMachine {
         newMessage = newMessage.filter((el, i) => {
           if(!this.alphabet.includes(el)) {
             arrIndex.push(i);
-           } else return el;
-  
+          } else return el;
         });
-        console.log('expetion', newMessage, arrIndex);
       }
     }
     
     
     for(let i = 0; i < newMessage.length; i++ ) {
-      console.log(this.alphabet[(numAlph[newMessage[i]] + numAlph[newKey[i % newKey.length]]) % this.alphabet.length])
-        codeWord.push(this.alphabet[(numAlph[newMessage[i]] - numAlph[newKey[i % newKey.length]] + this.alphabet.length) % this.alphabet.length]);
+      codeWord.push(this.alphabet[(numAlph[newMessage[i]] - numAlph[newKey[i % newKey.length]] + this.alphabet.length) % this.alphabet.length]);
     }
 
     if(!this.isCrypt) {
